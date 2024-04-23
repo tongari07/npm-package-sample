@@ -1,0 +1,52 @@
+{
+  "name": "@tongari07/npm-package-sample",
+  "version": "0.0.1",
+  "description": "Sample npm package for React Typescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tongari07/npm-package-sample.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "license": "MIT",
+  "author": "tongari07",
+  "scripts": {
+    "build:clear": "rm -rf dist",
+    "build:esm": "tsc --build tsconfig.esm.json",
+    "build:cjs": "tsc --build tsconfig.cjs.json",
+    "build": "pnpm run build:clear && pnpm run build:esm && pnpm run build:cjs"
+  },
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/esm/index.js",
+      "import": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./*": {
+      "require": "./dist/esm/*/index.js",
+      "import": "./dist/cjs/*/index.js",
+      "default": "./dist/esm/*/index.js"
+    }
+  },
+  "files": [
+    "./dist"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "ts-node": "^10.9.2"
+  },
+  "peerDependencies": {
+    "react": "17 - 18",
+    "react-dom": "17 - 18"
+  }
+}
