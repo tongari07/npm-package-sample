@@ -32,7 +32,7 @@
     }
   },
   "files": [
-    "./dist"
+    "dist"
   ],
   "dependencies": {
     "react": "^18.2.0",
